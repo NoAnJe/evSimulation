@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<header>
+		<script>
+			function runScript() {
+				var request = new XMLHttpRequest();
+				request.onreadystatechange = function() {
+					if (request.readyState === 4) {
+						if (request.status === 200) {
+							alert('Ran the script, result was: ' + request.responseText);
+						} else {
+							alert('Something went wrong, status was ' + request.status);
+						}
+					}
+				};
+				request.open('POST', 'testInput.php', true);
+				request.send(null);
+				return false;  // Prevent the default button action
+			};
+		</script>
+	</header>
+	<body>
+		<h1>Electric Vehicle Grid Impact Simulator</h1>
+		<form action="/EV/massRun.php">
+			<label>Number of owners</label><input type="number" name="owners" id="ev-owners">
+			<br>
+			<button type="submit" id="form-button">Run Simulation</button>
+		</form>
+		
+		
+		<p>Doesn't do anything right now, just proves Dropdowns exist :P</p>
+		<form action="/EV/testFunction.php">
+			<label>Number of owners</label><input type="number" id="ev-owners">
+			<br>
+			<label>Month: </label>
+			<select name="month">
+			  <option value="january">January</option>
+			  <option value="february">February</option>
+			  <option value="march">March</option>
+			  <option value="april">April</option>
+			  <option value="may">May</option>
+			  <option value="june">June</option>
+			  <option value="july">July</option>
+			  <option value="august">August</option>
+			  <option value="september">September</option>
+			  <option value="october">October</option>
+			  <option value="november">November</option>
+			  <option value="december">December</option>
+			</select>
+			<br>
+			<button type="submit" id="form-button">Run Simulation</button>
+		</form>
+		<!--
+		<button type="submit" id="script-button">
+			Please Run the script
+		</button>
+		<script>
+			document.getElementById('script-button').onclick = runScript;
+		</script>-->
+		<br>
+		<br>
+		<p>Just for testing html forms, php functions, and a SANITY CHECK</p>
+		<form action="/EV/testFunction.php" method="post">
+			<label>Number 1</label><input type="number" name="number1" id="number1">
+			<br>
+			<label>NUmber 2</label><input type="number" name="number2" id="number2">
+			<br>
+			<button type="submit" id="form-button2">Add Numbers</button>
+		</form>
+	</body>
+</html>
